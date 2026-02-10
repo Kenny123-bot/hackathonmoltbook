@@ -1,2 +1,1 @@
-# hackathonmoltbook
-Moltbook Hackathon Platform is a powerful, web-based system built to design, manage, and execute hackathons with efficiency and transparency. The platform supports secure, role-based authentication for administrators, judges, and participants, ensuring controlled access and accountability. Participants can form teams, submit projects,
+Moltbook Hackathon Platform is a web-based system designed to manage and run hackathons efficiently from start to finish. It provides tools for organizers, participants, and judges to collaborate within a secure, role-based environment while ensuring transparency and fairness throughout the competition.
