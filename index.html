@@ -1,0 +1,212 @@
+<?php
+// Initialize message
+$message = "";
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name  = htmlspecialchars(trim($_POST["name"] ?? ""));
+    $email = htmlspecialchars(trim($_POST["email"] ?? ""));
+    $team  = htmlspecialchars(trim($_POST["team"] ?? ""));
+
+    if ($name && $email) {
+        // Later: save to database here
+        $message = "🎉 Registration successful! Welcome, $name.";
+    } else {
+        $message = "❌ Please fill in all required fields.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackathon Management System</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6fb;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6366f1, #2563eb);
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 { font-size: 2.6rem; margin-bottom: 10px; }
+    header p { font-size: 1.2rem; }
+
+    nav {
+      background: #fff;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    nav a {
+      margin-left: 15px;
+      color: #2563eb;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    .card h3 { color: #2563eb; margin-bottom: 10px; }
+
+    .timeline li {
+      background: #fff;
+      padding: 18px;
+      margin-bottom: 15px;
+      border-left: 5px solid #2563eb;
+      border-radius: 8px;
+      list-style: none;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+    }
+
+    button {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .message {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #16a34a;
+    }
+
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <strong>Hackathon</strong>
+  <div>
+    <a href="#about">About</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#register">Register</a>
+  </div>
+</nav>
+
+<header>
+  <h1>Build for Impact Hackathon</h1>
+  <p>Collaborate. Code. Create Solutions.</p>
+</header>
+
+<section id="about">
+  <h2>About the Hackathon</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Who Can Join?</h3>
+      <p>Developers, designers, students, and innovators.</p>
+    </div>
+    <div class="card">
+      <h3>Theme</h3>
+      <p>Technology for Social Good.</p>
+    </div>
+    <div class="card">
+      <h3>Duration</h3>
+      <p>48 hours of intense innovation.</p>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>Timeline</h2>
+  <ul class="timeline">
+    <li><strong>Registration:</strong> Open</li>
+    <li><strong>Hacking:</strong> 48 Hours</li>
+    <li><strong>Judging:</strong> Final Day</li>
+    <li><strong>Winners:</strong> Announcement</li>
+  </ul>
+</section>
+
+<section id="register">
+  <h2>Register</h2>
+
+  <?php if ($message): ?>
+    <p class="message"><?= $message ?></p>
+  <?php endif; ?>
+
+  <form method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="text" name="team" placeholder="Team Name (optional)">
+    <button type="submit">Register</button>
+  </form>
+</section>
+
+<footer>
+  © 2026 Hackathon Management System
+</footer>
+
+</body>
+</html>
